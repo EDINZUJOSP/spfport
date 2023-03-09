@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply snap-y snap-proximity;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply bg-white text-gray-900;
+}
+
+/* Ensure our body and wrapper have full height */
+html,
+body,
+#__next {
+  @apply h-full;
+}
+
+#__next {
+  @apply flex flex-col;
+}
+
+@layer base {
+}
+
+@layer components {
+  /* TODO: Sidebar for individual asset pages, might be able to delete with redesign */
+  @media (min-width: 768px) {
+    .right-w-drawer {
+      right: 24rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .right-w-drawer {
+      right: 36rem;
+    }
+  }
+
+  /* TODO: Blog styles, can probably delete */
+  .post-content a {
+    @apply underline text-blue-600 hover:text-blue-400;
+  }
+
+  /* Terms and condition styles */
+  .terms-and-privacy h2 {
+    @apply text-lg font-bold leading-6 mt-8 mb-2;
+  }
+
+  .terms-and-privacy h3 {
+    @apply text-base font-bold leading-6 mt-8 mb-2;
+  }
+
+  .terms-and-privacy p,
+  .terms-and-privacy-explanation p {
+    @apply text-base leading-6 my-8;
+  }
+
+  .terms-and-privacy h2 + p {
+    @apply text-base leading-6 mt-2;
+  }
+
+  .terms-and-privacy h3 + p {
+    @apply text-base leading-6 mt-2;
+  }
+
+  .terms-and-privacy ul {
+    @apply text-base leading-6 my-8 pl-4 list-disc;
+  }
+
+  .terms-and-privacy ol {
+    @apply text-base leading-6 my-8 pl-4 list-decimal;
+  }
+
+  .terms-and-privacy ol ol {
+    @apply text-base leading-6 my-2 pl-4;
+  }
+
+  .terms-and-privacy ul ul {
+    @apply text-base leading-6 my-2 pl-4 list-disc;
+  }
+
+  .terms-and-privacy li {
+    @apply text-base leading-6 my-2;
+  }
+
+  /* TODO: Delete this, it's for the old landing page */
+  .explore-button-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(80, 152, 248, 1) 7%,
+      rgba(57, 117, 255, 1) 100%
+    );
+  }
+}
+
+@layer utilities {
+  /* TODO: Move these into tailwind config */
+  .animate-quarter-spin {
+    animation: quarter-spin 1s ease-in-out infinite;
+  }
+
+  @keyframes quarter-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* TODO: Move these into tailwind config */
+  .desktop-aspect {
+    padding-bottom: 56.25%;
+  }
+
+  .phone-aspect {
+    padding-bottom: 177.78%;
+  }
+
+  /* TODO: Use the tailwind class instead of this one */
+  a.disabled {
+    pointer-events: none;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .animate-fade-in {
+    @apply opacity-0;
+    animation: fade-in 5s ease 1s forwards;
+  }
+
+  .animate-fade-in-fast {
+    @apply opacity-0;
+    animation: fade-in 2s ease 0.2s forwards;
+  }
+
+  .animate-fade-out {
+    animation: fade-out 5s ease 1s forwards;
+  }
+
+  .animate-delay-2 {
+    animation-delay: 2s;
+  }
+}
+
+
+
+@import url('https://fonts.cdnfonts.com/css/work-sans');
+
+:root {
+  --sp-blue-dark: #003462;
+  --sp-white: #ffffff;
+  --sp-blue-light: #0669FD;
+  --sp-beige-light: #FFFCF5;
+  --sp-beige-dark: #F5EEE3;
+}
+
+@layer sp-navbar{
+
+   
+}
+
+
+.sp-navbar{
+  background-color:var(--sp-beige-light);
+  opacity: 0.8;
+}
+
+.sp-header-text{
+color:var(--sp-blue-dark);
+font-size: 1rem;
+font-family: 'Work Sans', sans-serif;
+font-weight: 600;
+}
+
+.sp-header-button{
+padding:0.5rem 1.5rem;
+background-color:var(--sp-blue-light);
+border-radius: 56px;
+font-size: 0.875rem;
+margin: 0 0.5rem;
+color:var(--sp-white);
+}
+
+
+
+.sp-header-menu-overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: var(--sp-beige-dark);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sp-header-menu-overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+
+.sp-header-menu-overlay.open {
+  width: 100%;
+}
+
+
+
+.sp-header-menu-overlay .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+
+.sp-close-btn {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.sp-close-btn:hover {
+  opacity: 1;
+}
+.sp-close-btn:before, .sp-close-btn:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.sp-close-btn:before {
+  transform: rotate(45deg);
+}
+.sp-close-btn:after {
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-height: 450px) {
+  .sp-header-menu-overlay a {font-size: 20px}
+  .sp-header-menu-overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+.sp-hamburger{
+  cursor: pointer;
+}
